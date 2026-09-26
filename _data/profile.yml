@@ -11,8 +11,8 @@ github: "https://github.com/Xinglin-Hu"
 cv: "files/cv.pdf"
 # Add a real Google Scholar profile URL here when you have one; otherwise keep blank.
 scholar: ""
-# Optional: upload a portrait to assets/portrait.jpg and set this to assets/portrait.jpg.
-portrait: ""
+# Replace assets/portrait.jpg to update the photo. Leave this field blank to hide it.
+portrait: "assets/portrait.jpg"
 bio:
   - "I study Data Science and Big Data Technology at The Chinese University of Hong Kong, Shenzhen, and expect to graduate in 2027."
 research_interests: "My research interests span machine learning, large language models (LLMs), and generative models for images and video. I am particularly interested in making these systems more trustworthy and controllable."
