@@ -34,9 +34,8 @@ layout: null
   </header>
 
   <main id="main">
-    <section class="hero page-width" aria-labelledby="name">
+    <section class="hero page-width{% if p.portrait != "" %} hero-with-portrait{% endif %}" aria-labelledby="name">
       <div class="hero-copy">
-        {% if p.portrait != "" %}<img class="portrait" src="{{ site.baseurl }}/{{ p.portrait }}" alt="Portrait of {{ p.name | escape }}" width="240" height="240">{% endif %}
         <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span>{{ p.role | escape }}</p>
         <h1 id="name">{{ p.name | escape }}<span class="name-period">.</span></h1>
         <div class="bio">{% for paragraph in p.bio %}<p>{{ paragraph | escape }}</p>{% endfor %}<p>{{ p.research_interests | escape }}</p></div>
@@ -47,6 +46,7 @@ layout: null
           {% if p.scholar != "" %}<a href="{{ p.scholar | escape }}">Google Scholar <span aria-hidden="true">↗</span></a>{% endif %}
         </div>
       </div>
+      {% if p.portrait != "" %}<img class="portrait" src="{{ site.baseurl }}/{{ p.portrait | escape }}" alt="Portrait of {{ p.name | escape }}" width="750" height="1050" decoding="async">{% endif %}
     </section>
 
     <section id="research" class="section page-width" aria-labelledby="research-title">
