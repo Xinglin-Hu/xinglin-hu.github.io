@@ -1,0 +1,19 @@
+- title: "Jigsaw Agile Community Rules Classification"
+  context: "Kaggle featured competition · Team lead"
+  period: "Oct 2025"
+  highlight: "Silver medal · Rank 47 / 2,445"
+  description: "Combined Qwen3-4B, GTE, and DeBERTa in a weighted-rank ensemble, with pseudo-label augmentation and parameter-efficient fine-tuning."
+  tags:
+    - "LLMs"
+    - "Ensembling"
+    - "QLoRA"
+
+- title: "Post-Training & Optimization for Reasoning Models"
+  context: "Reading seminar · Supervised by Xiao Li"
+  period: "Sep – Dec 2025"
+  highlight: ""
+  description: "Read, presented, and discussed papers on post-training for reasoning models, including GRPO and its variants, and optimization methods such as Muon, Shampoo, and Adam."
+  tags:
+    - "Reinforcement learning"
+    - "Optimization"
+

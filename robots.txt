@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://xinglin-hu.github.io/sitemap.xml
+
