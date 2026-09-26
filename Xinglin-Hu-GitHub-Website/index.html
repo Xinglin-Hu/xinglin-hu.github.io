@@ -1,0 +1,103 @@
+---
+layout: null
+---
+{% assign p = site.data.profile %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ p.name | escape }} — {{ p.institution_short | escape }}</title>
+  <meta name="description" content="{{ site.description | escape }}">
+  <meta name="author" content="{{ p.name | escape }}">
+  <meta name="theme-color" content="#f7f7f2">
+  <link rel="canonical" href="{{ site.url | escape }}{{ site.baseurl }}/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ p.name | escape }} — {{ p.institution_short | escape }}">
+  <meta property="og:description" content="{{ site.description | escape }}">
+  <meta property="og:url" content="{{ site.url | escape }}{{ site.baseurl }}/">
+  <link rel="icon" href="{{ site.baseurl }}/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/style.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#top" aria-label="{{ p.name | escape }}, back to top"><span class="monogram" aria-hidden="true">{{ p.initials }}</span><span>{{ p.name | escape }}</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a class="nav-cv" href="{{ site.baseurl }}/{{ p.cv }}">CV <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero page-width" aria-labelledby="name">
+      <div class="hero-copy">
+        {% if p.portrait != "" %}<img class="portrait" src="{{ site.baseurl }}/{{ p.portrait }}" alt="Portrait of {{ p.name | escape }}" width="240" height="240">{% endif %}
+        <p class="eyebrow"><span class="small-rule" aria-hidden="true"></span>{{ p.role | escape }}</p>
+        <h1 id="name">{{ p.name | escape }}<span class="name-period">.</span></h1>
+        <div class="bio">{% for paragraph in p.bio %}<p>{{ paragraph | escape }}</p>{% endfor %}<p>{{ p.research_interests | escape }}</p></div>
+        <div class="contact-links" aria-label="Contact and profiles">
+          <a href="mailto:{{ p.email | escape }}"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>Email</a>
+          <a href="{{ p.github | escape }}"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1-.3-2-1-2.5 4-.5 7-2 7-6.5 0-1.5-.5-3-1.5-4 0-1 0-2-.5-3-1 0-2 .5-3 1-2-.5-4-.5-6 0-1-.5-2-1-3-1-.5 1-.5 2-.5 3C5.5 5.5 5 7 5 8.5c0 4.5 3 6 7 6.5-.7.5-1 1.5-1 2.5V22"/></svg>GitHub</a>
+          <a href="{{ site.baseurl }}/{{ p.cv }}"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>CV <span class="file-type">PDF</span></a>
+          {% if p.scholar != "" %}<a href="{{ p.scholar | escape }}">Google Scholar <span aria-hidden="true">↗</span></a>{% endif %}
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section page-width" aria-labelledby="research-title">
+      <div class="section-heading"><div><p class="label">01 / Research</p><h2 id="research-title">Publications & preprints</h2></div></div>
+      <div class="publications">
+        {% for paper in site.data.publications %}
+        <article class="paper">
+          <span class="paper-number" aria-hidden="true">0{{ forloop.index }}</span>
+          <div class="paper-body">
+            <div class="paper-meta"><span class="venue">{{ paper.venue | escape }}</span><span class="status status-{{ paper.category }}">{{ paper.status | escape }}</span></div>
+            <h3>{{ paper.title | escape }}</h3>
+            <p class="authors">{{ paper.authors | escape | replace: 'X. Hu', '<strong>X. Hu</strong>' | replace: 'Xinglin Hu', '<strong>Xinglin Hu</strong>' }}</p>
+            {% if paper.note != "" %}<p class="paper-note">{{ paper.note | escape }}</p>{% endif %}
+            {% for version in paper.versions %}<div class="paper-version"><div class="paper-meta"><span class="venue">{{ version.venue | escape }}</span><span class="status status-{{ version.category }}">{{ version.status | escape }}</span></div><p><span>{{ version.label | escape }}:</span> {{ version.title | escape }}</p></div>{% endfor %}
+            <p class="paper-summary">{{ paper.summary | escape }}</p>
+            {% if paper.links.size > 0 %}<div class="paper-links">{% for link in paper.links %}<a href="{{ link.url | escape }}">{{ link.label | escape }} <span aria-hidden="true">↗</span></a>{% endfor %}</div>{% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="experience" class="section page-width" aria-labelledby="experience-title">
+      <div class="section-heading"><div><p class="label">02 / Experience</p><h2 id="experience-title">Research & industry</h2></div></div>
+      <div class="timeline">
+        {% for item in site.data.experience %}<article class="timeline-item"><p class="timeline-date">{{ item.period | escape }}</p><div class="timeline-content"><h3>{{ item.role | escape }}</h3><p class="organization">{{ item.organization | escape }}</p>{% if item.supervisor != "" %}<p class="supervision">Supervised by {{ item.supervisor | escape }}</p>{% endif %}<p>{{ item.description | escape }}</p></div></article>{% endfor %}
+      </div>
+    </section>
+
+    <section id="education" class="section page-width" aria-labelledby="education-title">
+      <div class="section-heading"><div><p class="label">03 / Education</p><h2 id="education-title">Learning & foundations</h2></div></div>
+      <div class="education-list">
+        {% for item in site.data.education %}<article class="education-item"><p class="timeline-date">{{ item.period | escape }}</p><div><h3>{{ item.institution | escape }}</h3><p class="qualification">{{ item.qualification | escape }}</p><p class="education-details">{{ item.details | escape }}</p></div></article>{% endfor %}
+      </div>
+    </section>
+
+    <section id="projects" class="section page-width" aria-labelledby="projects-title">
+      <div class="section-heading"><div><p class="label">04 / More work</p><h2 id="projects-title">Projects & seminars</h2></div></div>
+      <div class="project-grid">
+        {% for project in site.data.projects %}<article class="project"><div class="project-topline"><span class="label">{{ project.period | escape }}</span><span aria-hidden="true" class="project-symbol">{% if forloop.first %}↗{% else %}∑{% endif %}</span></div><h3>{{ project.title | escape }}</h3><p class="project-context">{{ project.context | escape }}</p>{% if project.highlight != "" %}<p class="project-highlight">{{ project.highlight | escape }}</p>{% endif %}<p class="project-description">{{ project.description | escape }}</p><ul class="tags" aria-label="Topics">{% for tag in project.tags %}<li>{{ tag | escape }}</li>{% endfor %}</ul></article>{% endfor %}
+      </div>
+    </section>
+
+    <section class="closing-section page-width" aria-label="Honors and personal interests">
+      <div class="honors"><p class="label">Honors</p>{% for award in site.data.awards %}<p><strong>{{ award.title | escape }}</strong><span>{{ award.detail | escape }}</span></p>{% endfor %}</div>
+      <div class="beyond"><p class="label">Beyond research</p><p>{{ p.personal | escape }}</p></div>
+    </section>
+
+    <section id="contact" class="contact-section" aria-labelledby="contact-title"><div class="page-width contact-inner"><div><p class="label">Contact</p><h2 id="contact-title">Get in touch.</h2><a class="email-address" href="mailto:{{ p.email | escape }}">{{ p.email | escape }} <span aria-hidden="true">↗</span></a></div><a class="cv-button" href="{{ site.baseurl }}/{{ p.cv }}">View full CV <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer page-width"><span>© {{ p.name | escape }}</span><span>Updated {{ p.updated | escape }}</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
+

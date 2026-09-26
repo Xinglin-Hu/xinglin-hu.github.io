@@ -1,0 +1,30 @@
+- role: "Project Lead · LLM Hallucination Detection"
+  organization: "CUHK-Shenzhen"
+  supervisor: "Jicong Fan"
+  period: "Nov 2025 – Present"
+  description: "Researching distribution-consistency-based hallucination detection, with an emphasis on training-free methods and efficient computation."
+
+- role: "Independent Research · Single-Image Style Transfer"
+  organization: "CUHK-Shenzhen"
+  supervisor: ""
+  period: "Sep 2025 – Present"
+  description: "Developing single-image style transfer methods with diffusion models. Analyzed the roles of U-Net blocks and combined targeted LoRA training with clustering-based style abstraction."
+
+- role: "AI & Data Analytics Intern"
+  organization: "Huawei"
+  supervisor: ""
+  period: "Jun – Sep 2026"
+  description: "Developed MCP-based data-query tools and analysis skills, multi-agent attribution workflows, and persistent memory for AI-assisted analytics and reporting."
+
+- role: "Undergraduate Research Assistant · LLM Evaluation"
+  organization: "CUHK-Shenzhen"
+  supervisor: "Ruoyu Sun"
+  period: "Sep 2025 – Jun 2026"
+  description: "Contributed to ORGEval and the Bench4Opt benchmark for evaluating LLMs in mathematical optimization modeling."
+
+- role: "Undergraduate Research Assistant · Autonomous Driving"
+  organization: "CUHK-Shenzhen × Huawei IAS BU"
+  supervisor: "Li Jiang"
+  period: "Jan – May 2026"
+  description: "Worked on lane-perception post-processing, topology refinement, and teacher–student distillation for LaneSegNet."
+
